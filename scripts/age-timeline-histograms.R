@@ -1,6 +1,7 @@
 library(tidyverse)
 library(ggpol)
 source("libs/libs.R")
+
 # Load data
 raw_hostmetagenome <- load_thedir_data("data/ancientmetagenome-hostassociated.tsv", "Host Associated Metagenome")
 raw_hostsinglegenome <- load_thedir_data("data/ancientsinglegenome-hostassociated.tsv", "Host Associated Single Genome")
@@ -37,7 +38,7 @@ ggplot() +
   xlab("Years before present")  +
   theme(legend.position = "none",
         strip.background = element_blank()) +
-  facet_wrap(~factor(List, levels=c("Host Associated Metagenome","Host Associated Single Genome","Environmental Metagenome")))
+  facet_wrap(~factor(List, levels=names(dir_colours)))
 
 # Alternative visualization
 dat_hist %>%
